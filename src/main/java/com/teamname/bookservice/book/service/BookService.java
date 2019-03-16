@@ -18,4 +18,12 @@ public class BookService {
     public List<BookDto> findByTile(String title) {
         return bookDao.findByTitle(title).stream().map(BookDto::build).collect(Collectors.toList());
     }
+
+    public List<BookDto> findAll() {
+        return bookDao.findAll().stream().map(BookDto::build).collect(Collectors.toList());
+    }
+
+    public List<BookDto> findByCategoryId(Long id) {
+        return bookDao.findByCategoryId(id).stream().map(BookDto::build).collect(Collectors.toList());
+    }
 }

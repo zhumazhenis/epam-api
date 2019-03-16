@@ -1,7 +1,6 @@
 package com.teamname.bookservice.request.model.dao;
 
 import com.teamname.bookservice.request.model.Request;
-import com.teamname.bookservice.request.model.dao.RequestDao;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,11 +21,15 @@ public class RequestDaoImpl implements RequestDao {
 
     @Override
     public List<Request> findByInitiatorUserId(Long id) {
-        return null;
+        return em.createQuery("from Request request where request.initiatorUser.id = :id", Request.class)
+            .setParameter("id", Request.class)
+            .getResultList();
     }
 
     @Override
     public List<Request> findByReceiverUserId(Long id) {
-        return null;
+        return em.createQuery("from Request request where request.receiverUser.id = :id", Request.class)
+            .setParameter("id", id)
+            .getResultList();
     }
 }

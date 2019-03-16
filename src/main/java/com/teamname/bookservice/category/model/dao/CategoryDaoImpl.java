@@ -1,7 +1,6 @@
 package com.teamname.bookservice.category.model.dao;
 
 import com.teamname.bookservice.category.model.Category;
-import com.teamname.bookservice.category.model.dao.CategoryDao;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -21,6 +20,6 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public List<Category> findAll() {
-        return null;
+        return em.createQuery("from Catergory category", Category.class).getResultList();
     }
 }

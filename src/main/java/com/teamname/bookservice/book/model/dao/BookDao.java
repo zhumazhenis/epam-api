@@ -13,5 +13,5 @@ public interface BookDao {
 
     List<Book> findByCategoryId(Long id);
 
-    List<Book> findByOwnerId(Long id);
+    List<Book> findAll();
 }

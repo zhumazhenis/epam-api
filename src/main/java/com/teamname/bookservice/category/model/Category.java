@@ -1,6 +1,7 @@
 package com.teamname.bookservice.category.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.teamname.bookservice.book.model.Book;
 
 import javax.persistence.*;
@@ -40,8 +41,9 @@ public class Category {
 
     @ManyToMany(targetEntity = Book.class, fetch = FetchType.LAZY)
     @JoinTable(name = "book_category_map_",
-        joinColumns = {@JoinColumn(name = "category_id_", referencedColumnName = "id_")},
-        inverseJoinColumns = {@JoinColumn(name = "book_id_", referencedColumnName = "id_")})
+        joinColumns = {@JoinColumn(name = "category_id_")},
+        inverseJoinColumns = {@JoinColumn(name = "book_id_")})
+    @JsonBackReference
     public List<Book> getBooks() {
         return books;
     }

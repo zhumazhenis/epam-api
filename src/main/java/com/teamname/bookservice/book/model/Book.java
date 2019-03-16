@@ -1,6 +1,7 @@
 package com.teamname.bookservice.book.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teamname.bookservice.category.model.Category;
 import com.teamname.bookservice.user.model.User;
 
@@ -54,8 +55,9 @@ public class Book {
 
     @ManyToMany(targetEntity = Category.class, fetch = FetchType.LAZY)
     @JoinTable(name = "book_category_map_",
-        joinColumns = {@JoinColumn(name = "book_id_", referencedColumnName = "id_")},
-        inverseJoinColumns = {@JoinColumn(name = "category_id_", referencedColumnName = "id_")})
+        joinColumns = {@JoinColumn(name = "book_id_")},
+        inverseJoinColumns = {@JoinColumn(name = "category_id_")})
+    @JsonManagedReference
     public List<Category> getCategories() {
         return categories;
     }
