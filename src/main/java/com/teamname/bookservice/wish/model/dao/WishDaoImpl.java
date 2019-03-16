@@ -1,7 +1,9 @@
 package com.teamname.bookservice.wish.model.dao;
 
+import com.teamname.bookservice.book.model.Book;
+import com.teamname.bookservice.user.model.User;
 import com.teamname.bookservice.wish.model.Wish;
-import com.teamname.bookservice.wish.model.dao.WishDao;
+import com.teamname.bookservice.wish.model.WishPostDto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,6 +24,19 @@ public class WishDaoImpl implements WishDao {
 
     @Override
     public List<Wish> findByUserId(Long id) {
-        return null;
+        return em.createQuery("from Wish wish where whish.user.id =: id", Wish.class)
+            .setParameter("id", id)
+            .getResultList();
+    }
+
+    @Override
+    public Wish save(WishPostDto wishPostDto) {
+       Book book = em.find(Book.class, wishPostDto.bookId);
+       User user = em.find(User.class, wishPostDto.userId);
+       Wish wish = new Wish();
+       wish.setBook(book);
+       wish.setUser(user);
+       em.persist(wish);
+       return wish;
     }
 }

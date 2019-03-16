@@ -17,7 +17,6 @@ public class Book {
     private String author;
     private List<Category> categories;
     private String description;
-    private User ownerUser;
     private String image;
     private Integer year;
     private Date dateCreated;
@@ -72,16 +71,6 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "owner_")
-    public User getOwnerUser() {
-        return ownerUser;
-    }
-
-    public void setOwnerUser(User ownerUser) {
-        this.ownerUser = ownerUser;
     }
 
     @Column(name = "image_")

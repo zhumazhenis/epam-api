@@ -7,9 +7,21 @@ import java.util.Date;
 
 public class WishDto {
 
-    public Long id;
-    public User user;
-    public Book book;
-    public Date dateCreated;
-    public Date dateModified;
+    public Long userId;
+    public Long bookId;
+    public String title;
+    public String author;
+    public String description;
+    public String image;
+    public Integer year;
+
+    public static WishDto build(Wish wish) {
+        WishDto wishDto = new WishDto();
+        wishDto.title = wish.getBook().getTitle();
+        wishDto.author = wish.getBook().getAuthor();
+        wishDto.description = wish.getBook().getDescription();
+        wishDto.author = wish.getBook().getAuthor();
+
+        return wishDto;
+    }
 }

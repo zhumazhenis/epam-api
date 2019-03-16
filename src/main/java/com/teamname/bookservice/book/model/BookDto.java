@@ -13,7 +13,6 @@ public class BookDto {
     public String author;
     public List<Category> categories;
     public String description;
-    public User ownerUser;
     public String image;
     public Date dateCreated;
     public Date dateModified;
@@ -25,7 +24,6 @@ public class BookDto {
         bookDto.author = book.getAuthor();
         bookDto.categories = book.getCategories();
         bookDto.description = book.getDescription();
-        bookDto.ownerUser = book.getOwnerUser();
         bookDto.title = book.getTitle();
         bookDto.dateCreated = book.getDateCreated();
         bookDto.dateModified = book.getDateModified();
