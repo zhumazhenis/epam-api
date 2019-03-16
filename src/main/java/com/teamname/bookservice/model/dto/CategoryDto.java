@@ -1,14 +1,15 @@
 package com.teamname.bookservice.model.dto;
 
-import java.util.Date;
+import com.teamname.bookservice.model.Book;
 
-public class UserDto {
+import java.util.Date;
+import java.util.List;
+
+public class CategoryDto {
 
     public Long id;
-    public String firstName;
-    public String lastName;
-    public String phone;
-    public String city;
+    public String name;
+    public List<Book> books;
     public Date dateCreated;
     public Date dateModified;
 }
